@@ -2,6 +2,10 @@ import numpy as np
 from plotly import graph_objs as go
 
 
+def normalizeCounts(countArray, num):
+    reb_counts = np.squeeze(countArray)/np.mean(np.sort(np.squeeze(countArray))[-num:])
+    return reb_counts
+
 def plot_data(expt, files, normalize, plotcurrent=0, nPi = []):
     "Attribute - expt - can either be 'counting' or 'odmr' or 'pulsedodmr' or 'rabi' or 'ramsey' or 'spinecho' or 'doubleecho' or 'nmr'.\
     If value of plotcurrent is 1 then it will plot the current data. If value of normalize is 1 then it will normalize 'odmr' and 'doubleecho' signal."
